@@ -1,4 +1,4 @@
-conda activate jupyterbook
+conda init bash
 jupyter-book build --all .
 git add .
 git commit -m "Updated book"
