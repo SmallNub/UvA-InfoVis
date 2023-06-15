@@ -1,3 +1,4 @@
+# Run file from the terminal in this folder with 'source update.sh'
 conda activate jupyterbook
 jupyter-book build --all .
 git add .
