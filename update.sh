@@ -1,4 +1,3 @@
-conda init bash
 conda activate jupyterbook
 jupyter-book build --all .
 git add .
