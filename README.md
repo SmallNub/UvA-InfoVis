@@ -1,3 +1,4 @@
-# jupyter-book-template
+# Most successful music artist
 
-This repository hosts the tutorial and template code for building a basic Jupyter Book website.
+This repository hosts the data visualisation for the most successful music artist.
+This is a project for UvA, Information Visualisation.
