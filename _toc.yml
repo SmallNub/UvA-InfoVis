@@ -2,9 +2,11 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: docs/home
+root: index
 parts:
-  chapters:
-  - file: docs/notebook
-  - file: docs/cleaner
-  - file: docs/preprocess
+  - caption: p1
+    chapters:
+      - file: docs/notebook
+    chapters:
+      - file: docs/cleaner
+      - file: docs/preprocess
