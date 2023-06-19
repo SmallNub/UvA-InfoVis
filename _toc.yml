@@ -4,4 +4,6 @@
 format: jb-book
 root: docs/home
 chapters:
-- file: docs/
+- file: docs/notebook
+- file: docs/cleaner
+- file: docs/preprocess
