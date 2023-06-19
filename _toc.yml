@@ -7,6 +7,7 @@ parts:
   - caption: p1
     chapters:
       - file: docs/notebook
+  - caption: p2
     chapters:
       - file: docs/cleaner
       - file: docs/preprocess
