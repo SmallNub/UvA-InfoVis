@@ -3,7 +3,8 @@
 
 format: jb-book
 root: docs/home
-chapters:
-- file: docs/notebook
-- file: docs/cleaner
-- file: docs/preprocess
+parts:
+  chapters:
+  - file: docs/notebook
+  - file: docs/cleaner
+  - file: docs/preprocess
