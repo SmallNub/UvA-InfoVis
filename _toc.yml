@@ -11,8 +11,8 @@ parts:
     chapters:
       - file: docs/cleaner
       - file: docs/preprocess
-    # - caption: Visualisations
-      section:
+    - caption: Visualisations
+      sections:
         - file: docs/vis1
   # - caption: Reflection 
   #   chapters:
