@@ -402,18 +402,20 @@ document.write(`
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;riaakaggle.csv&#39;</span><span class="p">)</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 
+<span class="n">line</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
 <span class="c1"># Create the data for each bar</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Certified&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Artist&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Certified Units&#39;</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;rgb(107,107,107)&#39;</span><span class="p">)),</span>
-    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Gold&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Artist&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Gold&#39;</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;rgb(255, 215, 0)&#39;</span><span class="p">)),</span>
-    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Platinum&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Artist&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Platinum&#39;</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;rgb(160, 178, 198)&#39;</span><span class="p">)),</span>
-    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Multi-Platinum&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Artist&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Multi-Platinum&#39;</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;rgb(205,213,224)&#39;</span><span class="p">)),</span>
-    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Diamond&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Artist&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Diamond&#39;</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;rgb(160,225,245)&#39;</span><span class="p">))</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Certified&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Artist&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Certified Units&#39;</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;rgb(102,194,165)&#39;</span><span class="p">),</span> <span class="n">line</span><span class="o">=</span><span class="n">line</span><span class="p">),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Gold&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Artist&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Gold&#39;</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;rgb(245, 242, 76)&#39;</span><span class="p">),</span> <span class="n">line</span><span class="o">=</span><span class="n">line</span><span class="p">),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Platinum&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Artist&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Platinum&#39;</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;rgb(160, 178, 198)&#39;</span><span class="p">),</span> <span class="n">line</span><span class="o">=</span><span class="n">line</span><span class="p">),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Multi-Platinum&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Artist&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Multi-Platinum&#39;</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;rgb(205,213,224)&#39;</span><span class="p">),</span> <span class="n">line</span><span class="o">=</span><span class="n">line</span><span class="p">),</span>
+    <span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Diamond&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Artist&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Diamond&#39;</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;rgb(160,225,245)&#39;</span><span class="p">),</span> <span class="n">line</span><span class="o">=</span><span class="n">line</span><span class="p">)</span>
 <span class="p">]</span>
 
 <span class="c1"># Set the layout options</span>
 <span class="n">layout</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span>
-    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Music Artists - Certification Levels&#39;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Top 25 Music Artists - Certification Levels&#39;</span><span class="p">,</span>
     <span class="n">height</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
     <span class="n">xaxis</span><span class="o">=</span><span class="n">go</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">XAxis</span><span class="p">(</span>
         <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;category&#39;</span><span class="p">,</span>  <span class="c1"># the type for the x-axis is categorical</span>
@@ -424,8 +426,9 @@ document.write(`
     <span class="n">yaxis</span><span class="o">=</span><span class="n">go</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">YAxis</span><span class="p">(</span>
         <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Units&#39;</span>
     <span class="p">),</span>
-    <span class="n">barmode</span><span class="o">=</span><span class="s1">&#39;group&#39;</span>  <span class="c1"># set the bars to be grouped</span>
+    <span class="n">barmode</span><span class="o">=</span><span class="s1">&#39;group&#39;</span><span class="p">,</span>  <span class="c1"># set the bars to be grouped</span>
 <span class="p">)</span>
+
 
 <span class="c1"># Create the figure and plot</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
@@ -434,6 +437,417 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+Cell In[1], line 12
+      8 line = dict(color=&#39;black&#39;, width=1)
+     10 # Create the data for each bar
+     11 data = [
+---&gt; 12     go.Bar(name=&#39;Certified&#39;, x=df[&#39;Artist&#39;], y=df[&#39;Certified Units&#39;], marker=dict(color=&#39;rgb(102,194,165)&#39;), line=line),
+     13     go.Bar(name=&#39;Gold&#39;, x=df[&#39;Artist&#39;], y=df[&#39;Gold&#39;], marker=dict(color=&#39;rgb(245, 242, 76)&#39;), line=line),
+     14     go.Bar(name=&#39;Platinum&#39;, x=df[&#39;Artist&#39;], y=df[&#39;Platinum&#39;], marker=dict(color=&#39;rgb(160, 178, 198)&#39;), line=line),
+     15     go.Bar(name=&#39;Multi-Platinum&#39;, x=df[&#39;Artist&#39;], y=df[&#39;Multi-Platinum&#39;], marker=dict(color=&#39;rgb(205,213,224)&#39;), line=line),
+     16     go.Bar(name=&#39;Diamond&#39;, x=df[&#39;Artist&#39;], y=df[&#39;Diamond&#39;], marker=dict(color=&#39;rgb(160,225,245)&#39;), line=line)
+     17 ]
+     19 # Set the layout options
+     20 layout = go.Layout(
+     21     title=&#39;Top 25 Music Artists - Certification Levels&#39;,
+     22     height=800,
+   (...)
+     32     barmode=&#39;group&#39;,  # set the bars to be grouped
+     33 )
+
+File /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/plotly/graph_objs/_bar.py:3334, in Bar.__init__(self, arg, alignmentgroup, base, basesrc, cliponaxis, constraintext, customdata, customdatasrc, dx, dy, error_x, error_y, hoverinfo, hoverinfosrc, hoverlabel, hovertemplate, hovertemplatesrc, hovertext, hovertextsrc, ids, idssrc, insidetextanchor, insidetextfont, legend, legendgroup, legendgrouptitle, legendrank, legendwidth, marker, meta, metasrc, name, offset, offsetgroup, offsetsrc, opacity, orientation, outsidetextfont, selected, selectedpoints, showlegend, stream, text, textangle, textfont, textposition, textpositionsrc, textsrc, texttemplate, texttemplatesrc, uid, uirevision, unselected, visible, width, widthsrc, x, x0, xaxis, xcalendar, xhoverformat, xperiod, xperiod0, xperiodalignment, xsrc, y, y0, yaxis, ycalendar, yhoverformat, yperiod, yperiod0, yperiodalignment, ysrc, **kwargs)
+   3330 arg.pop(&quot;type&quot;, None)
+   3332 # Process unknown kwargs
+   3333 # ----------------------
+-&gt; 3334 self._process_kwargs(**dict(arg, **kwargs))
+   3336 # Reset skip_invalid
+   3337 # ------------------
+   3338 self._skip_invalid = False
+
+File /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/plotly/basedatatypes.py:4391, in BasePlotlyType._process_kwargs(self, **kwargs)
+   4389     self[k] = v
+   4390 elif not self._skip_invalid:
+-&gt; 4391     raise err
+
+ValueError: Invalid property specified for object of type plotly.graph_objs.Bar: &#39;line&#39;
+
+Did you mean &quot;base&quot;?
+
+    Valid properties:
+        alignmentgroup
+            Set several traces linked to the same position axis or
+            matching axes to the same alignmentgroup. This controls
+            whether bars compute their positional range dependently
+            or independently.
+        base
+            Sets where the bar base is drawn (in position axis
+            units). In &quot;stack&quot; or &quot;relative&quot; barmode, traces that
+            set &quot;base&quot; will be excluded and drawn in &quot;overlay&quot; mode
+            instead.
+        basesrc
+            Sets the source reference on Chart Studio Cloud for
+            `base`.
+        cliponaxis
+            Determines whether the text nodes are clipped about the
+            subplot axes. To show the text nodes above axis lines
+            and tick labels, make sure to set `xaxis.layer` and
+            `yaxis.layer` to *below traces*.
+        constraintext
+            Constrain the size of text inside or outside a bar to
+            be no larger than the bar itself.
+        customdata
+            Assigns extra data each datum. This may be useful when
+            listening to hover, click and selection events. Note
+            that, &quot;scatter&quot; traces also appends customdata items in
+            the markers DOM elements
+        customdatasrc
+            Sets the source reference on Chart Studio Cloud for
+            `customdata`.
+        dx
+            Sets the x coordinate step. See `x0` for more info.
+        dy
+            Sets the y coordinate step. See `y0` for more info.
+        error_x
+            :class:`plotly.graph_objects.bar.ErrorX` instance or
+            dict with compatible properties
+        error_y
+            :class:`plotly.graph_objects.bar.ErrorY` instance or
+            dict with compatible properties
+        hoverinfo
+            Determines which trace information appear on hover. If
+            `none` or `skip` are set, no information is displayed
+            upon hovering. But, if `none` is set, click and hover
+            events are still fired.
+        hoverinfosrc
+            Sets the source reference on Chart Studio Cloud for
+            `hoverinfo`.
+        hoverlabel
+            :class:`plotly.graph_objects.bar.Hoverlabel` instance
+            or dict with compatible properties
+        hovertemplate
+            Template string used for rendering the information that
+            appear on hover box. Note that this will override
+            `hoverinfo`. Variables are inserted using %{variable},
+            for example &quot;y: %{y}&quot; as well as %{xother}, {%_xother},
+            {%_xother_}, {%xother_}. When showing info for several
+            points, &quot;xother&quot; will be added to those with different
+            x positions from the first point. An underscore before
+            or after &quot;(x|y)other&quot; will add a space on that side,
+            only when this field is shown. Numbers are formatted
+            using d3-format&#39;s syntax %{variable:d3-format}, for
+            example &quot;Price: %{y:$.2f}&quot;.
+            https://github.com/d3/d3-format/tree/v1.4.5#d3-format
+            for details on the formatting syntax. Dates are
+            formatted using d3-time-format&#39;s syntax
+            %{variable|d3-time-format}, for example &quot;Day:
+            %{2019-01-01|%A}&quot;. https://github.com/d3/d3-time-
+            format/tree/v2.2.3#locale_format for details on the
+            date formatting syntax. The variables available in
+            `hovertemplate` are the ones emitted as event data
+            described at this link
+            https://plotly.com/javascript/plotlyjs-events/#event-
+            data. Additionally, every attributes that can be
+            specified per-point (the ones that are `arrayOk: true`)
+            are available. Finally, the template string has access
+            to variables `value` and `label`. Anything contained in
+            tag `&lt;extra&gt;` is displayed in the secondary box, for
+            example &quot;&lt;extra&gt;{fullData.name}&lt;/extra&gt;&quot;. To hide the
+            secondary box completely, use an empty tag
+            `&lt;extra&gt;&lt;/extra&gt;`.
+        hovertemplatesrc
+            Sets the source reference on Chart Studio Cloud for
+            `hovertemplate`.
+        hovertext
+            Sets hover text elements associated with each (x,y)
+            pair. If a single string, the same string appears over
+            all the data points. If an array of string, the items
+            are mapped in order to the this trace&#39;s (x,y)
+            coordinates. To be seen, trace `hoverinfo` must contain
+            a &quot;text&quot; flag.
+        hovertextsrc
+            Sets the source reference on Chart Studio Cloud for
+            `hovertext`.
+        ids
+            Assigns id labels to each datum. These ids for object
+            constancy of data points during animation. Should be an
+            array of strings, not numbers or any other type.
+        idssrc
+            Sets the source reference on Chart Studio Cloud for
+            `ids`.
+        insidetextanchor
+            Determines if texts are kept at center or start/end
+            points in `textposition` &quot;inside&quot; mode.
+        insidetextfont
+            Sets the font used for `text` lying inside the bar.
+        legend
+            Sets the reference to a legend to show this trace in.
+            References to these legends are &quot;legend&quot;, &quot;legend2&quot;,
+            &quot;legend3&quot;, etc. Settings for these legends are set in
+            the layout, under `layout.legend`, `layout.legend2`,
+            etc.
+        legendgroup
+            Sets the legend group for this trace. Traces part of
+            the same legend group hide/show at the same time when
+            toggling legend items.
+        legendgrouptitle
+            :class:`plotly.graph_objects.bar.Legendgrouptitle`
+            instance or dict with compatible properties
+        legendrank
+            Sets the legend rank for this trace. Items and groups
+            with smaller ranks are presented on top/left side while
+            with `*reversed* `legend.traceorder` they are on
+            bottom/right side. The default legendrank is 1000, so
+            that you can use ranks less than 1000 to place certain
+            items before all unranked items, and ranks greater than
+            1000 to go after all unranked items.
+        legendwidth
+            Sets the width (in px or fraction) of the legend for
+            this trace.
+        marker
+            :class:`plotly.graph_objects.bar.Marker` instance or
+            dict with compatible properties
+        meta
+            Assigns extra meta information associated with this
+            trace that can be used in various text attributes.
+            Attributes such as trace `name`, graph, axis and
+            colorbar `title.text`, annotation `text`
+            `rangeselector`, `updatemenues` and `sliders` `label`
+            text all support `meta`. To access the trace `meta`
+            values in an attribute in the same trace, simply use
+            `%{meta[i]}` where `i` is the index or key of the
+            `meta` item in question. To access trace `meta` in
+            layout attributes, use `%{data[n[.meta[i]}` where `i`
+            is the index or key of the `meta` and `n` is the trace
+            index.
+        metasrc
+            Sets the source reference on Chart Studio Cloud for
+            `meta`.
+        name
+            Sets the trace name. The trace name appear as the
+            legend item and on hover.
+        offset
+            Shifts the position where the bar is drawn (in position
+            axis units). In &quot;group&quot; barmode, traces that set
+            &quot;offset&quot; will be excluded and drawn in &quot;overlay&quot; mode
+            instead.
+        offsetgroup
+            Set several traces linked to the same position axis or
+            matching axes to the same offsetgroup where bars of the
+            same position coordinate will line up.
+        offsetsrc
+            Sets the source reference on Chart Studio Cloud for
+            `offset`.
+        opacity
+            Sets the opacity of the trace.
+        orientation
+            Sets the orientation of the bars. With &quot;v&quot; (&quot;h&quot;), the
+            value of the each bar spans along the vertical
+            (horizontal).
+        outsidetextfont
+            Sets the font used for `text` lying outside the bar.
+        selected
+            :class:`plotly.graph_objects.bar.Selected` instance or
+            dict with compatible properties
+        selectedpoints
+            Array containing integer indices of selected points.
+            Has an effect only for traces that support selections.
+            Note that an empty array means an empty selection where
+            the `unselected` are turned on for all points, whereas,
+            any other non-array values means no selection all where
+            the `selected` and `unselected` styles have no effect.
+        showlegend
+            Determines whether or not an item corresponding to this
+            trace is shown in the legend.
+        stream
+            :class:`plotly.graph_objects.bar.Stream` instance or
+            dict with compatible properties
+        text
+            Sets text elements associated with each (x,y) pair. If
+            a single string, the same string appears over all the
+            data points. If an array of string, the items are
+            mapped in order to the this trace&#39;s (x,y) coordinates.
+            If trace `hoverinfo` contains a &quot;text&quot; flag and
+            &quot;hovertext&quot; is not set, these elements will be seen in
+            the hover labels.
+        textangle
+            Sets the angle of the tick labels with respect to the
+            bar. For example, a `tickangle` of -90 draws the tick
+            labels vertically. With &quot;auto&quot; the texts may
+            automatically be rotated to fit with the maximum size
+            in bars.
+        textfont
+            Sets the font used for `text`.
+        textposition
+            Specifies the location of the `text`. &quot;inside&quot;
+            positions `text` inside, next to the bar end (rotated
+            and scaled if needed). &quot;outside&quot; positions `text`
+            outside, next to the bar end (scaled if needed), unless
+            there is another bar stacked on this one, then the text
+            gets pushed inside. &quot;auto&quot; tries to position `text`
+            inside the bar, but if the bar is too small and no bar
+            is stacked on this one the text is moved outside. If
+            &quot;none&quot;, no text appears.
+        textpositionsrc
+            Sets the source reference on Chart Studio Cloud for
+            `textposition`.
+        textsrc
+            Sets the source reference on Chart Studio Cloud for
+            `text`.
+        texttemplate
+            Template string used for rendering the information text
+            that appear on points. Note that this will override
+            `textinfo`. Variables are inserted using %{variable},
+            for example &quot;y: %{y}&quot;. Numbers are formatted using
+            d3-format&#39;s syntax %{variable:d3-format}, for example
+            &quot;Price: %{y:$.2f}&quot;.
+            https://github.com/d3/d3-format/tree/v1.4.5#d3-format
+            for details on the formatting syntax. Dates are
+            formatted using d3-time-format&#39;s syntax
+            %{variable|d3-time-format}, for example &quot;Day:
+            %{2019-01-01|%A}&quot;. https://github.com/d3/d3-time-
+            format/tree/v2.2.3#locale_format for details on the
+            date formatting syntax. Every attributes that can be
+            specified per-point (the ones that are `arrayOk: true`)
+            are available. Finally, the template string has access
+            to variables `value` and `label`.
+        texttemplatesrc
+            Sets the source reference on Chart Studio Cloud for
+            `texttemplate`.
+        uid
+            Assign an id to this trace, Use this to provide object
+            constancy between traces during animations and
+            transitions.
+        uirevision
+            Controls persistence of some user-driven changes to the
+            trace: `constraintrange` in `parcoords` traces, as well
+            as some `editable: true` modifications such as `name`
+            and `colorbar.title`. Defaults to `layout.uirevision`.
+            Note that other user-driven trace attribute changes are
+            controlled by `layout` attributes: `trace.visible` is
+            controlled by `layout.legend.uirevision`,
+            `selectedpoints` is controlled by
+            `layout.selectionrevision`, and `colorbar.(x|y)`
+            (accessible with `config: {editable: true}`) is
+            controlled by `layout.editrevision`. Trace changes are
+            tracked by `uid`, which only falls back on trace index
+            if no `uid` is provided. So if your app can add/remove
+            traces before the end of the `data` array, such that
+            the same trace has a different index, you can still
+            preserve user-driven changes if you give each trace a
+            `uid` that stays with it as it moves.
+        unselected
+            :class:`plotly.graph_objects.bar.Unselected` instance
+            or dict with compatible properties
+        visible
+            Determines whether or not this trace is visible. If
+            &quot;legendonly&quot;, the trace is not drawn, but can appear as
+            a legend item (provided that the legend itself is
+            visible).
+        width
+            Sets the bar width (in position axis units).
+        widthsrc
+            Sets the source reference on Chart Studio Cloud for
+            `width`.
+        x
+            Sets the x coordinates.
+        x0
+            Alternate to `x`. Builds a linear space of x
+            coordinates. Use with `dx` where `x0` is the starting
+            coordinate and `dx` the step.
+        xaxis
+            Sets a reference between this trace&#39;s x coordinates and
+            a 2D cartesian x axis. If &quot;x&quot; (the default value), the
+            x coordinates refer to `layout.xaxis`. If &quot;x2&quot;, the x
+            coordinates refer to `layout.xaxis2`, and so on.
+        xcalendar
+            Sets the calendar system to use with `x` date data.
+        xhoverformat
+            Sets the hover text formatting rulefor `x`  using d3
+            formatting mini-languages which are very similar to
+            those in Python. For numbers, see:
+            https://github.com/d3/d3-format/tree/v1.4.5#d3-format.
+            And for dates see: https://github.com/d3/d3-time-
+            format/tree/v2.2.3#locale_format. We add two items to
+            d3&#39;s date formatter: &quot;%h&quot; for half of the year as a
+            decimal number as well as &quot;%{n}f&quot; for fractional
+            seconds with n digits. For example, *2016-10-13
+            09:15:23.456* with tickformat &quot;%H~%M~%S.%2f&quot; would
+            display *09~15~23.46*By default the values are
+            formatted using `xaxis.hoverformat`.
+        xperiod
+            Only relevant when the axis `type` is &quot;date&quot;. Sets the
+            period positioning in milliseconds or &quot;M&lt;n&gt;&quot; on the x
+            axis. Special values in the form of &quot;M&lt;n&gt;&quot; could be
+            used to declare the number of months. In this case `n`
+            must be a positive integer.
+        xperiod0
+            Only relevant when the axis `type` is &quot;date&quot;. Sets the
+            base for period positioning in milliseconds or date
+            string on the x0 axis. When `x0period` is round number
+            of weeks, the `x0period0` by default would be on a
+            Sunday i.e. 2000-01-02, otherwise it would be at
+            2000-01-01.
+        xperiodalignment
+            Only relevant when the axis `type` is &quot;date&quot;. Sets the
+            alignment of data points on the x axis.
+        xsrc
+            Sets the source reference on Chart Studio Cloud for
+            `x`.
+        y
+            Sets the y coordinates.
+        y0
+            Alternate to `y`. Builds a linear space of y
+            coordinates. Use with `dy` where `y0` is the starting
+            coordinate and `dy` the step.
+        yaxis
+            Sets a reference between this trace&#39;s y coordinates and
+            a 2D cartesian y axis. If &quot;y&quot; (the default value), the
+            y coordinates refer to `layout.yaxis`. If &quot;y2&quot;, the y
+            coordinates refer to `layout.yaxis2`, and so on.
+        ycalendar
+            Sets the calendar system to use with `y` date data.
+        yhoverformat
+            Sets the hover text formatting rulefor `y`  using d3
+            formatting mini-languages which are very similar to
+            those in Python. For numbers, see:
+            https://github.com/d3/d3-format/tree/v1.4.5#d3-format.
+            And for dates see: https://github.com/d3/d3-time-
+            format/tree/v2.2.3#locale_format. We add two items to
+            d3&#39;s date formatter: &quot;%h&quot; for half of the year as a
+            decimal number as well as &quot;%{n}f&quot; for fractional
+            seconds with n digits. For example, *2016-10-13
+            09:15:23.456* with tickformat &quot;%H~%M~%S.%2f&quot; would
+            display *09~15~23.46*By default the values are
+            formatted using `yaxis.hoverformat`.
+        yperiod
+            Only relevant when the axis `type` is &quot;date&quot;. Sets the
+            period positioning in milliseconds or &quot;M&lt;n&gt;&quot; on the y
+            axis. Special values in the form of &quot;M&lt;n&gt;&quot; could be
+            used to declare the number of months. In this case `n`
+            must be a positive integer.
+        yperiod0
+            Only relevant when the axis `type` is &quot;date&quot;. Sets the
+            base for period positioning in milliseconds or date
+            string on the y0 axis. When `y0period` is round number
+            of weeks, the `y0period0` by default would be on a
+            Sunday i.e. 2000-01-02, otherwise it would be at
+            2000-01-01.
+        yperiodalignment
+            Only relevant when the axis `type` is &quot;date&quot;. Sets the
+            alignment of data points on the y axis.
+        ysrc
+            Sets the source reference on Chart Studio Cloud for
+            `y`.
+        
+Did you mean &quot;base&quot;?
+
+Bad property path:
+line
+^^^^
+</pre></div>
+</div>
 </div>
 </div>
 

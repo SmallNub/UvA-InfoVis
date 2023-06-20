@@ -1,0 +1,851 @@
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/nbclient/client.py", line 1304, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 166, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 650, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/nbclient/client.py", line 650, in async_setup_kernel
+    yield
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/nbclient/client.py", line 1020, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import pandas as pd
+import plotly.graph_objects as go
+
+# Read the dataset into a pandas DataFrame
+df = pd.read_csv('riaakaggle.csv')
+df = df.head(n=25)
+
+line = dict(color='black', width=1)
+
+# Create the data for each bar
+data = [
+    go.Bar(name='Certified', x=df['Artist'], y=df['Certified Units'], marker=dict(color='rgb(102,194,165)'), line=line),
+    go.Bar(name='Gold', x=df['Artist'], y=df['Gold'], marker=dict(color='rgb(245, 242, 76)'), line=line),
+    go.Bar(name='Platinum', x=df['Artist'], y=df['Platinum'], marker=dict(color='rgb(160, 178, 198)'), line=line),
+    go.Bar(name='Multi-Platinum', x=df['Artist'], y=df['Multi-Platinum'], marker=dict(color='rgb(205,213,224)'), line=line),
+    go.Bar(name='Diamond', x=df['Artist'], y=df['Diamond'], marker=dict(color='rgb(160,225,245)'), line=line)
+]
+
+# Set the layout options
+layout = go.Layout(
+    title='Top 25 Music Artists - Certification Levels',
+    height=800,
+    xaxis=go.layout.XAxis(
+        type='category',  # the type for the x-axis is categorical
+        title='Artist',
+        tickangle=45,     # rotate x-axis labels by 45 degrees
+        tickfont=dict(size=10)
+    ),
+    yaxis=go.layout.YAxis(
+        title='Units'
+    ),
+    barmode='group',  # set the bars to be grouped
+)
+
+
+# Create the figure and plot
+fig = go.Figure(data=data, layout=layout)
+fig.show()
+
+
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+Cell [0;32mIn[1], line 12[0m
+[1;32m      8[0m line [38;5;241m=[39m [38;5;28mdict[39m(color[38;5;241m=[39m[38;5;124m'[39m[38;5;124mblack[39m[38;5;124m'[39m, width[38;5;241m=[39m[38;5;241m1[39m)
+[1;32m     10[0m [38;5;66;03m# Create the data for each bar[39;00m
+[1;32m     11[0m data [38;5;241m=[39m [
+[0;32m---> 12[0m     [43mgo[49m[38;5;241;43m.[39;49m[43mBar[49m[43m([49m[43mname[49m[38;5;241;43m=[39;49m[38;5;124;43m'[39;49m[38;5;124;43mCertified[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[43mx[49m[38;5;241;43m=[39;49m[43mdf[49m[43m[[49m[38;5;124;43m'[39;49m[38;5;124;43mArtist[39;49m[38;5;124;43m'[39;49m[43m][49m[43m,[49m[43m [49m[43my[49m[38;5;241;43m=[39;49m[43mdf[49m[43m[[49m[38;5;124;43m'[39;49m[38;5;124;43mCertified Units[39;49m[38;5;124;43m'[39;49m[43m][49m[43m,[49m[43m [49m[43mmarker[49m[38;5;241;43m=[39;49m[38;5;28;43mdict[39;49m[43m([49m[43mcolor[49m[38;5;241;43m=[39;49m[38;5;124;43m'[39;49m[38;5;124;43mrgb(102,194,165)[39;49m[38;5;124;43m'[39;49m[43m)[49m[43m,[49m[43m [49m[43mline[49m[38;5;241;43m=[39;49m[43mline[49m[43m)[49m,
+[1;32m     13[0m     go[38;5;241m.[39mBar(name[38;5;241m=[39m[38;5;124m'[39m[38;5;124mGold[39m[38;5;124m'[39m, x[38;5;241m=[39mdf[[38;5;124m'[39m[38;5;124mArtist[39m[38;5;124m'[39m], y[38;5;241m=[39mdf[[38;5;124m'[39m[38;5;124mGold[39m[38;5;124m'[39m], marker[38;5;241m=[39m[38;5;28mdict[39m(color[38;5;241m=[39m[38;5;124m'[39m[38;5;124mrgb(245, 242, 76)[39m[38;5;124m'[39m), line[38;5;241m=[39mline),
+[1;32m     14[0m     go[38;5;241m.[39mBar(name[38;5;241m=[39m[38;5;124m'[39m[38;5;124mPlatinum[39m[38;5;124m'[39m, x[38;5;241m=[39mdf[[38;5;124m'[39m[38;5;124mArtist[39m[38;5;124m'[39m], y[38;5;241m=[39mdf[[38;5;124m'[39m[38;5;124mPlatinum[39m[38;5;124m'[39m], marker[38;5;241m=[39m[38;5;28mdict[39m(color[38;5;241m=[39m[38;5;124m'[39m[38;5;124mrgb(160, 178, 198)[39m[38;5;124m'[39m), line[38;5;241m=[39mline),
+[1;32m     15[0m     go[38;5;241m.[39mBar(name[38;5;241m=[39m[38;5;124m'[39m[38;5;124mMulti-Platinum[39m[38;5;124m'[39m, x[38;5;241m=[39mdf[[38;5;124m'[39m[38;5;124mArtist[39m[38;5;124m'[39m], y[38;5;241m=[39mdf[[38;5;124m'[39m[38;5;124mMulti-Platinum[39m[38;5;124m'[39m], marker[38;5;241m=[39m[38;5;28mdict[39m(color[38;5;241m=[39m[38;5;124m'[39m[38;5;124mrgb(205,213,224)[39m[38;5;124m'[39m), line[38;5;241m=[39mline),
+[1;32m     16[0m     go[38;5;241m.[39mBar(name[38;5;241m=[39m[38;5;124m'[39m[38;5;124mDiamond[39m[38;5;124m'[39m, x[38;5;241m=[39mdf[[38;5;124m'[39m[38;5;124mArtist[39m[38;5;124m'[39m], y[38;5;241m=[39mdf[[38;5;124m'[39m[38;5;124mDiamond[39m[38;5;124m'[39m], marker[38;5;241m=[39m[38;5;28mdict[39m(color[38;5;241m=[39m[38;5;124m'[39m[38;5;124mrgb(160,225,245)[39m[38;5;124m'[39m), line[38;5;241m=[39mline)
+[1;32m     17[0m ]
+[1;32m     19[0m [38;5;66;03m# Set the layout options[39;00m
+[1;32m     20[0m layout [38;5;241m=[39m go[38;5;241m.[39mLayout(
+[1;32m     21[0m     title[38;5;241m=[39m[38;5;124m'[39m[38;5;124mTop 25 Music Artists - Certification Levels[39m[38;5;124m'[39m,
+[1;32m     22[0m     height[38;5;241m=[39m[38;5;241m800[39m,
+[0;32m   (...)[0m
+[1;32m     32[0m     barmode[38;5;241m=[39m[38;5;124m'[39m[38;5;124mgroup[39m[38;5;124m'[39m,  [38;5;66;03m# set the bars to be grouped[39;00m
+[1;32m     33[0m )
+
+File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/plotly/graph_objs/_bar.py:3334[0m, in [0;36mBar.__init__[0;34m(self, arg, alignmentgroup, base, basesrc, cliponaxis, constraintext, customdata, customdatasrc, dx, dy, error_x, error_y, hoverinfo, hoverinfosrc, hoverlabel, hovertemplate, hovertemplatesrc, hovertext, hovertextsrc, ids, idssrc, insidetextanchor, insidetextfont, legend, legendgroup, legendgrouptitle, legendrank, legendwidth, marker, meta, metasrc, name, offset, offsetgroup, offsetsrc, opacity, orientation, outsidetextfont, selected, selectedpoints, showlegend, stream, text, textangle, textfont, textposition, textpositionsrc, textsrc, texttemplate, texttemplatesrc, uid, uirevision, unselected, visible, width, widthsrc, x, x0, xaxis, xcalendar, xhoverformat, xperiod, xperiod0, xperiodalignment, xsrc, y, y0, yaxis, ycalendar, yhoverformat, yperiod, yperiod0, yperiodalignment, ysrc, **kwargs)[0m
+[1;32m   3330[0m arg[38;5;241m.[39mpop([38;5;124m"[39m[38;5;124mtype[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m)
+[1;32m   3332[0m [38;5;66;03m# Process unknown kwargs[39;00m
+[1;32m   3333[0m [38;5;66;03m# ----------------------[39;00m
+[0;32m-> 3334[0m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_process_kwargs[49m[43m([49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[38;5;28;43mdict[39;49m[43m([49m[43marg[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m[43m)[49m
+[1;32m   3336[0m [38;5;66;03m# Reset skip_invalid[39;00m
+[1;32m   3337[0m [38;5;66;03m# ------------------[39;00m
+[1;32m   3338[0m [38;5;28mself[39m[38;5;241m.[39m_skip_invalid [38;5;241m=[39m [38;5;28;01mFalse[39;00m
+
+File [0;32m/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/plotly/basedatatypes.py:4391[0m, in [0;36mBasePlotlyType._process_kwargs[0;34m(self, **kwargs)[0m
+[1;32m   4389[0m     [38;5;28mself[39m[k] [38;5;241m=[39m v
+[1;32m   4390[0m [38;5;28;01melif[39;00m [38;5;129;01mnot[39;00m [38;5;28mself[39m[38;5;241m.[39m_skip_invalid:
+[0;32m-> 4391[0m     [38;5;28;01mraise[39;00m err
+
+[0;31mValueError[0m: Invalid property specified for object of type plotly.graph_objs.Bar: 'line'
+
+Did you mean "base"?
+
+    Valid properties:
+        alignmentgroup
+            Set several traces linked to the same position axis or
+            matching axes to the same alignmentgroup. This controls
+            whether bars compute their positional range dependently
+            or independently.
+        base
+            Sets where the bar base is drawn (in position axis
+            units). In "stack" or "relative" barmode, traces that
+            set "base" will be excluded and drawn in "overlay" mode
+            instead.
+        basesrc
+            Sets the source reference on Chart Studio Cloud for
+            `base`.
+        cliponaxis
+            Determines whether the text nodes are clipped about the
+            subplot axes. To show the text nodes above axis lines
+            and tick labels, make sure to set `xaxis.layer` and
+            `yaxis.layer` to *below traces*.
+        constraintext
+            Constrain the size of text inside or outside a bar to
+            be no larger than the bar itself.
+        customdata
+            Assigns extra data each datum. This may be useful when
+            listening to hover, click and selection events. Note
+            that, "scatter" traces also appends customdata items in
+            the markers DOM elements
+        customdatasrc
+            Sets the source reference on Chart Studio Cloud for
+            `customdata`.
+        dx
+            Sets the x coordinate step. See `x0` for more info.
+        dy
+            Sets the y coordinate step. See `y0` for more info.
+        error_x
+            :class:`plotly.graph_objects.bar.ErrorX` instance or
+            dict with compatible properties
+        error_y
+            :class:`plotly.graph_objects.bar.ErrorY` instance or
+            dict with compatible properties
+        hoverinfo
+            Determines which trace information appear on hover. If
+            `none` or `skip` are set, no information is displayed
+            upon hovering. But, if `none` is set, click and hover
+            events are still fired.
+        hoverinfosrc
+            Sets the source reference on Chart Studio Cloud for
+            `hoverinfo`.
+        hoverlabel
+            :class:`plotly.graph_objects.bar.Hoverlabel` instance
+            or dict with compatible properties
+        hovertemplate
+            Template string used for rendering the information that
+            appear on hover box. Note that this will override
+            `hoverinfo`. Variables are inserted using %{variable},
+            for example "y: %{y}" as well as %{xother}, {%_xother},
+            {%_xother_}, {%xother_}. When showing info for several
+            points, "xother" will be added to those with different
+            x positions from the first point. An underscore before
+            or after "(x|y)other" will add a space on that side,
+            only when this field is shown. Numbers are formatted
+            using d3-format's syntax %{variable:d3-format}, for
+            example "Price: %{y:$.2f}".
+            https://github.com/d3/d3-format/tree/v1.4.5#d3-format
+            for details on the formatting syntax. Dates are
+            formatted using d3-time-format's syntax
+            %{variable|d3-time-format}, for example "Day:
+            %{2019-01-01|%A}". https://github.com/d3/d3-time-
+            format/tree/v2.2.3#locale_format for details on the
+            date formatting syntax. The variables available in
+            `hovertemplate` are the ones emitted as event data
+            described at this link
+            https://plotly.com/javascript/plotlyjs-events/#event-
+            data. Additionally, every attributes that can be
+            specified per-point (the ones that are `arrayOk: true`)
+            are available. Finally, the template string has access
+            to variables `value` and `label`. Anything contained in
+            tag `<extra>` is displayed in the secondary box, for
+            example "<extra>{fullData.name}</extra>". To hide the
+            secondary box completely, use an empty tag
+            `<extra></extra>`.
+        hovertemplatesrc
+            Sets the source reference on Chart Studio Cloud for
+            `hovertemplate`.
+        hovertext
+            Sets hover text elements associated with each (x,y)
+            pair. If a single string, the same string appears over
+            all the data points. If an array of string, the items
+            are mapped in order to the this trace's (x,y)
+            coordinates. To be seen, trace `hoverinfo` must contain
+            a "text" flag.
+        hovertextsrc
+            Sets the source reference on Chart Studio Cloud for
+            `hovertext`.
+        ids
+            Assigns id labels to each datum. These ids for object
+            constancy of data points during animation. Should be an
+            array of strings, not numbers or any other type.
+        idssrc
+            Sets the source reference on Chart Studio Cloud for
+            `ids`.
+        insidetextanchor
+            Determines if texts are kept at center or start/end
+            points in `textposition` "inside" mode.
+        insidetextfont
+            Sets the font used for `text` lying inside the bar.
+        legend
+            Sets the reference to a legend to show this trace in.
+            References to these legends are "legend", "legend2",
+            "legend3", etc. Settings for these legends are set in
+            the layout, under `layout.legend`, `layout.legend2`,
+            etc.
+        legendgroup
+            Sets the legend group for this trace. Traces part of
+            the same legend group hide/show at the same time when
+            toggling legend items.
+        legendgrouptitle
+            :class:`plotly.graph_objects.bar.Legendgrouptitle`
+            instance or dict with compatible properties
+        legendrank
+            Sets the legend rank for this trace. Items and groups
+            with smaller ranks are presented on top/left side while
+            with `*reversed* `legend.traceorder` they are on
+            bottom/right side. The default legendrank is 1000, so
+            that you can use ranks less than 1000 to place certain
+            items before all unranked items, and ranks greater than
+            1000 to go after all unranked items.
+        legendwidth
+            Sets the width (in px or fraction) of the legend for
+            this trace.
+        marker
+            :class:`plotly.graph_objects.bar.Marker` instance or
+            dict with compatible properties
+        meta
+            Assigns extra meta information associated with this
+            trace that can be used in various text attributes.
+            Attributes such as trace `name`, graph, axis and
+            colorbar `title.text`, annotation `text`
+            `rangeselector`, `updatemenues` and `sliders` `label`
+            text all support `meta`. To access the trace `meta`
+            values in an attribute in the same trace, simply use
+            `%{meta[i]}` where `i` is the index or key of the
+            `meta` item in question. To access trace `meta` in
+            layout attributes, use `%{data[n[.meta[i]}` where `i`
+            is the index or key of the `meta` and `n` is the trace
+            index.
+        metasrc
+            Sets the source reference on Chart Studio Cloud for
+            `meta`.
+        name
+            Sets the trace name. The trace name appear as the
+            legend item and on hover.
+        offset
+            Shifts the position where the bar is drawn (in position
+            axis units). In "group" barmode, traces that set
+            "offset" will be excluded and drawn in "overlay" mode
+            instead.
+        offsetgroup
+            Set several traces linked to the same position axis or
+            matching axes to the same offsetgroup where bars of the
+            same position coordinate will line up.
+        offsetsrc
+            Sets the source reference on Chart Studio Cloud for
+            `offset`.
+        opacity
+            Sets the opacity of the trace.
+        orientation
+            Sets the orientation of the bars. With "v" ("h"), the
+            value of the each bar spans along the vertical
+            (horizontal).
+        outsidetextfont
+            Sets the font used for `text` lying outside the bar.
+        selected
+            :class:`plotly.graph_objects.bar.Selected` instance or
+            dict with compatible properties
+        selectedpoints
+            Array containing integer indices of selected points.
+            Has an effect only for traces that support selections.
+            Note that an empty array means an empty selection where
+            the `unselected` are turned on for all points, whereas,
+            any other non-array values means no selection all where
+            the `selected` and `unselected` styles have no effect.
+        showlegend
+            Determines whether or not an item corresponding to this
+            trace is shown in the legend.
+        stream
+            :class:`plotly.graph_objects.bar.Stream` instance or
+            dict with compatible properties
+        text
+            Sets text elements associated with each (x,y) pair. If
+            a single string, the same string appears over all the
+            data points. If an array of string, the items are
+            mapped in order to the this trace's (x,y) coordinates.
+            If trace `hoverinfo` contains a "text" flag and
+            "hovertext" is not set, these elements will be seen in
+            the hover labels.
+        textangle
+            Sets the angle of the tick labels with respect to the
+            bar. For example, a `tickangle` of -90 draws the tick
+            labels vertically. With "auto" the texts may
+            automatically be rotated to fit with the maximum size
+            in bars.
+        textfont
+            Sets the font used for `text`.
+        textposition
+            Specifies the location of the `text`. "inside"
+            positions `text` inside, next to the bar end (rotated
+            and scaled if needed). "outside" positions `text`
+            outside, next to the bar end (scaled if needed), unless
+            there is another bar stacked on this one, then the text
+            gets pushed inside. "auto" tries to position `text`
+            inside the bar, but if the bar is too small and no bar
+            is stacked on this one the text is moved outside. If
+            "none", no text appears.
+        textpositionsrc
+            Sets the source reference on Chart Studio Cloud for
+            `textposition`.
+        textsrc
+            Sets the source reference on Chart Studio Cloud for
+            `text`.
+        texttemplate
+            Template string used for rendering the information text
+            that appear on points. Note that this will override
+            `textinfo`. Variables are inserted using %{variable},
+            for example "y: %{y}". Numbers are formatted using
+            d3-format's syntax %{variable:d3-format}, for example
+            "Price: %{y:$.2f}".
+            https://github.com/d3/d3-format/tree/v1.4.5#d3-format
+            for details on the formatting syntax. Dates are
+            formatted using d3-time-format's syntax
+            %{variable|d3-time-format}, for example "Day:
+            %{2019-01-01|%A}". https://github.com/d3/d3-time-
+            format/tree/v2.2.3#locale_format for details on the
+            date formatting syntax. Every attributes that can be
+            specified per-point (the ones that are `arrayOk: true`)
+            are available. Finally, the template string has access
+            to variables `value` and `label`.
+        texttemplatesrc
+            Sets the source reference on Chart Studio Cloud for
+            `texttemplate`.
+        uid
+            Assign an id to this trace, Use this to provide object
+            constancy between traces during animations and
+            transitions.
+        uirevision
+            Controls persistence of some user-driven changes to the
+            trace: `constraintrange` in `parcoords` traces, as well
+            as some `editable: true` modifications such as `name`
+            and `colorbar.title`. Defaults to `layout.uirevision`.
+            Note that other user-driven trace attribute changes are
+            controlled by `layout` attributes: `trace.visible` is
+            controlled by `layout.legend.uirevision`,
+            `selectedpoints` is controlled by
+            `layout.selectionrevision`, and `colorbar.(x|y)`
+            (accessible with `config: {editable: true}`) is
+            controlled by `layout.editrevision`. Trace changes are
+            tracked by `uid`, which only falls back on trace index
+            if no `uid` is provided. So if your app can add/remove
+            traces before the end of the `data` array, such that
+            the same trace has a different index, you can still
+            preserve user-driven changes if you give each trace a
+            `uid` that stays with it as it moves.
+        unselected
+            :class:`plotly.graph_objects.bar.Unselected` instance
+            or dict with compatible properties
+        visible
+            Determines whether or not this trace is visible. If
+            "legendonly", the trace is not drawn, but can appear as
+            a legend item (provided that the legend itself is
+            visible).
+        width
+            Sets the bar width (in position axis units).
+        widthsrc
+            Sets the source reference on Chart Studio Cloud for
+            `width`.
+        x
+            Sets the x coordinates.
+        x0
+            Alternate to `x`. Builds a linear space of x
+            coordinates. Use with `dx` where `x0` is the starting
+            coordinate and `dx` the step.
+        xaxis
+            Sets a reference between this trace's x coordinates and
+            a 2D cartesian x axis. If "x" (the default value), the
+            x coordinates refer to `layout.xaxis`. If "x2", the x
+            coordinates refer to `layout.xaxis2`, and so on.
+        xcalendar
+            Sets the calendar system to use with `x` date data.
+        xhoverformat
+            Sets the hover text formatting rulefor `x`  using d3
+            formatting mini-languages which are very similar to
+            those in Python. For numbers, see:
+            https://github.com/d3/d3-format/tree/v1.4.5#d3-format.
+            And for dates see: https://github.com/d3/d3-time-
+            format/tree/v2.2.3#locale_format. We add two items to
+            d3's date formatter: "%h" for half of the year as a
+            decimal number as well as "%{n}f" for fractional
+            seconds with n digits. For example, *2016-10-13
+            09:15:23.456* with tickformat "%H~%M~%S.%2f" would
+            display *09~15~23.46*By default the values are
+            formatted using `xaxis.hoverformat`.
+        xperiod
+            Only relevant when the axis `type` is "date". Sets the
+            period positioning in milliseconds or "M<n>" on the x
+            axis. Special values in the form of "M<n>" could be
+            used to declare the number of months. In this case `n`
+            must be a positive integer.
+        xperiod0
+            Only relevant when the axis `type` is "date". Sets the
+            base for period positioning in milliseconds or date
+            string on the x0 axis. When `x0period` is round number
+            of weeks, the `x0period0` by default would be on a
+            Sunday i.e. 2000-01-02, otherwise it would be at
+            2000-01-01.
+        xperiodalignment
+            Only relevant when the axis `type` is "date". Sets the
+            alignment of data points on the x axis.
+        xsrc
+            Sets the source reference on Chart Studio Cloud for
+            `x`.
+        y
+            Sets the y coordinates.
+        y0
+            Alternate to `y`. Builds a linear space of y
+            coordinates. Use with `dy` where `y0` is the starting
+            coordinate and `dy` the step.
+        yaxis
+            Sets a reference between this trace's y coordinates and
+            a 2D cartesian y axis. If "y" (the default value), the
+            y coordinates refer to `layout.yaxis`. If "y2", the y
+            coordinates refer to `layout.yaxis2`, and so on.
+        ycalendar
+            Sets the calendar system to use with `y` date data.
+        yhoverformat
+            Sets the hover text formatting rulefor `y`  using d3
+            formatting mini-languages which are very similar to
+            those in Python. For numbers, see:
+            https://github.com/d3/d3-format/tree/v1.4.5#d3-format.
+            And for dates see: https://github.com/d3/d3-time-
+            format/tree/v2.2.3#locale_format. We add two items to
+            d3's date formatter: "%h" for half of the year as a
+            decimal number as well as "%{n}f" for fractional
+            seconds with n digits. For example, *2016-10-13
+            09:15:23.456* with tickformat "%H~%M~%S.%2f" would
+            display *09~15~23.46*By default the values are
+            formatted using `yaxis.hoverformat`.
+        yperiod
+            Only relevant when the axis `type` is "date". Sets the
+            period positioning in milliseconds or "M<n>" on the y
+            axis. Special values in the form of "M<n>" could be
+            used to declare the number of months. In this case `n`
+            must be a positive integer.
+        yperiod0
+            Only relevant when the axis `type` is "date". Sets the
+            base for period positioning in milliseconds or date
+            string on the y0 axis. When `y0period` is round number
+            of weeks, the `y0period0` by default would be on a
+            Sunday i.e. 2000-01-02, otherwise it would be at
+            2000-01-01.
+        yperiodalignment
+            Only relevant when the axis `type` is "date". Sets the
+            alignment of data points on the y axis.
+        ysrc
+            Sets the source reference on Chart Studio Cloud for
+            `y`.
+        
+Did you mean "base"?
+
+Bad property path:
+line
+^^^^
+ValueError: Invalid property specified for object of type plotly.graph_objs.Bar: 'line'
+
+Did you mean "base"?
+
+    Valid properties:
+        alignmentgroup
+            Set several traces linked to the same position axis or
+            matching axes to the same alignmentgroup. This controls
+            whether bars compute their positional range dependently
+            or independently.
+        base
+            Sets where the bar base is drawn (in position axis
+            units). In "stack" or "relative" barmode, traces that
+            set "base" will be excluded and drawn in "overlay" mode
+            instead.
+        basesrc
+            Sets the source reference on Chart Studio Cloud for
+            `base`.
+        cliponaxis
+            Determines whether the text nodes are clipped about the
+            subplot axes. To show the text nodes above axis lines
+            and tick labels, make sure to set `xaxis.layer` and
+            `yaxis.layer` to *below traces*.
+        constraintext
+            Constrain the size of text inside or outside a bar to
+            be no larger than the bar itself.
+        customdata
+            Assigns extra data each datum. This may be useful when
+            listening to hover, click and selection events. Note
+            that, "scatter" traces also appends customdata items in
+            the markers DOM elements
+        customdatasrc
+            Sets the source reference on Chart Studio Cloud for
+            `customdata`.
+        dx
+            Sets the x coordinate step. See `x0` for more info.
+        dy
+            Sets the y coordinate step. See `y0` for more info.
+        error_x
+            :class:`plotly.graph_objects.bar.ErrorX` instance or
+            dict with compatible properties
+        error_y
+            :class:`plotly.graph_objects.bar.ErrorY` instance or
+            dict with compatible properties
+        hoverinfo
+            Determines which trace information appear on hover. If
+            `none` or `skip` are set, no information is displayed
+            upon hovering. But, if `none` is set, click and hover
+            events are still fired.
+        hoverinfosrc
+            Sets the source reference on Chart Studio Cloud for
+            `hoverinfo`.
+        hoverlabel
+            :class:`plotly.graph_objects.bar.Hoverlabel` instance
+            or dict with compatible properties
+        hovertemplate
+            Template string used for rendering the information that
+            appear on hover box. Note that this will override
+            `hoverinfo`. Variables are inserted using %{variable},
+            for example "y: %{y}" as well as %{xother}, {%_xother},
+            {%_xother_}, {%xother_}. When showing info for several
+            points, "xother" will be added to those with different
+            x positions from the first point. An underscore before
+            or after "(x|y)other" will add a space on that side,
+            only when this field is shown. Numbers are formatted
+            using d3-format's syntax %{variable:d3-format}, for
+            example "Price: %{y:$.2f}".
+            https://github.com/d3/d3-format/tree/v1.4.5#d3-format
+            for details on the formatting syntax. Dates are
+            formatted using d3-time-format's syntax
+            %{variable|d3-time-format}, for example "Day:
+            %{2019-01-01|%A}". https://github.com/d3/d3-time-
+            format/tree/v2.2.3#locale_format for details on the
+            date formatting syntax. The variables available in
+            `hovertemplate` are the ones emitted as event data
+            described at this link
+            https://plotly.com/javascript/plotlyjs-events/#event-
+            data. Additionally, every attributes that can be
+            specified per-point (the ones that are `arrayOk: true`)
+            are available. Finally, the template string has access
+            to variables `value` and `label`. Anything contained in
+            tag `<extra>` is displayed in the secondary box, for
+            example "<extra>{fullData.name}</extra>". To hide the
+            secondary box completely, use an empty tag
+            `<extra></extra>`.
+        hovertemplatesrc
+            Sets the source reference on Chart Studio Cloud for
+            `hovertemplate`.
+        hovertext
+            Sets hover text elements associated with each (x,y)
+            pair. If a single string, the same string appears over
+            all the data points. If an array of string, the items
+            are mapped in order to the this trace's (x,y)
+            coordinates. To be seen, trace `hoverinfo` must contain
+            a "text" flag.
+        hovertextsrc
+            Sets the source reference on Chart Studio Cloud for
+            `hovertext`.
+        ids
+            Assigns id labels to each datum. These ids for object
+            constancy of data points during animation. Should be an
+            array of strings, not numbers or any other type.
+        idssrc
+            Sets the source reference on Chart Studio Cloud for
+            `ids`.
+        insidetextanchor
+            Determines if texts are kept at center or start/end
+            points in `textposition` "inside" mode.
+        insidetextfont
+            Sets the font used for `text` lying inside the bar.
+        legend
+            Sets the reference to a legend to show this trace in.
+            References to these legends are "legend", "legend2",
+            "legend3", etc. Settings for these legends are set in
+            the layout, under `layout.legend`, `layout.legend2`,
+            etc.
+        legendgroup
+            Sets the legend group for this trace. Traces part of
+            the same legend group hide/show at the same time when
+            toggling legend items.
+        legendgrouptitle
+            :class:`plotly.graph_objects.bar.Legendgrouptitle`
+            instance or dict with compatible properties
+        legendrank
+            Sets the legend rank for this trace. Items and groups
+            with smaller ranks are presented on top/left side while
+            with `*reversed* `legend.traceorder` they are on
+            bottom/right side. The default legendrank is 1000, so
+            that you can use ranks less than 1000 to place certain
+            items before all unranked items, and ranks greater than
+            1000 to go after all unranked items.
+        legendwidth
+            Sets the width (in px or fraction) of the legend for
+            this trace.
+        marker
+            :class:`plotly.graph_objects.bar.Marker` instance or
+            dict with compatible properties
+        meta
+            Assigns extra meta information associated with this
+            trace that can be used in various text attributes.
+            Attributes such as trace `name`, graph, axis and
+            colorbar `title.text`, annotation `text`
+            `rangeselector`, `updatemenues` and `sliders` `label`
+            text all support `meta`. To access the trace `meta`
+            values in an attribute in the same trace, simply use
+            `%{meta[i]}` where `i` is the index or key of the
+            `meta` item in question. To access trace `meta` in
+            layout attributes, use `%{data[n[.meta[i]}` where `i`
+            is the index or key of the `meta` and `n` is the trace
+            index.
+        metasrc
+            Sets the source reference on Chart Studio Cloud for
+            `meta`.
+        name
+            Sets the trace name. The trace name appear as the
+            legend item and on hover.
+        offset
+            Shifts the position where the bar is drawn (in position
+            axis units). In "group" barmode, traces that set
+            "offset" will be excluded and drawn in "overlay" mode
+            instead.
+        offsetgroup
+            Set several traces linked to the same position axis or
+            matching axes to the same offsetgroup where bars of the
+            same position coordinate will line up.
+        offsetsrc
+            Sets the source reference on Chart Studio Cloud for
+            `offset`.
+        opacity
+            Sets the opacity of the trace.
+        orientation
+            Sets the orientation of the bars. With "v" ("h"), the
+            value of the each bar spans along the vertical
+            (horizontal).
+        outsidetextfont
+            Sets the font used for `text` lying outside the bar.
+        selected
+            :class:`plotly.graph_objects.bar.Selected` instance or
+            dict with compatible properties
+        selectedpoints
+            Array containing integer indices of selected points.
+            Has an effect only for traces that support selections.
+            Note that an empty array means an empty selection where
+            the `unselected` are turned on for all points, whereas,
+            any other non-array values means no selection all where
+            the `selected` and `unselected` styles have no effect.
+        showlegend
+            Determines whether or not an item corresponding to this
+            trace is shown in the legend.
+        stream
+            :class:`plotly.graph_objects.bar.Stream` instance or
+            dict with compatible properties
+        text
+            Sets text elements associated with each (x,y) pair. If
+            a single string, the same string appears over all the
+            data points. If an array of string, the items are
+            mapped in order to the this trace's (x,y) coordinates.
+            If trace `hoverinfo` contains a "text" flag and
+            "hovertext" is not set, these elements will be seen in
+            the hover labels.
+        textangle
+            Sets the angle of the tick labels with respect to the
+            bar. For example, a `tickangle` of -90 draws the tick
+            labels vertically. With "auto" the texts may
+            automatically be rotated to fit with the maximum size
+            in bars.
+        textfont
+            Sets the font used for `text`.
+        textposition
+            Specifies the location of the `text`. "inside"
+            positions `text` inside, next to the bar end (rotated
+            and scaled if needed). "outside" positions `text`
+            outside, next to the bar end (scaled if needed), unless
+            there is another bar stacked on this one, then the text
+            gets pushed inside. "auto" tries to position `text`
+            inside the bar, but if the bar is too small and no bar
+            is stacked on this one the text is moved outside. If
+            "none", no text appears.
+        textpositionsrc
+            Sets the source reference on Chart Studio Cloud for
+            `textposition`.
+        textsrc
+            Sets the source reference on Chart Studio Cloud for
+            `text`.
+        texttemplate
+            Template string used for rendering the information text
+            that appear on points. Note that this will override
+            `textinfo`. Variables are inserted using %{variable},
+            for example "y: %{y}". Numbers are formatted using
+            d3-format's syntax %{variable:d3-format}, for example
+            "Price: %{y:$.2f}".
+            https://github.com/d3/d3-format/tree/v1.4.5#d3-format
+            for details on the formatting syntax. Dates are
+            formatted using d3-time-format's syntax
+            %{variable|d3-time-format}, for example "Day:
+            %{2019-01-01|%A}". https://github.com/d3/d3-time-
+            format/tree/v2.2.3#locale_format for details on the
+            date formatting syntax. Every attributes that can be
+            specified per-point (the ones that are `arrayOk: true`)
+            are available. Finally, the template string has access
+            to variables `value` and `label`.
+        texttemplatesrc
+            Sets the source reference on Chart Studio Cloud for
+            `texttemplate`.
+        uid
+            Assign an id to this trace, Use this to provide object
+            constancy between traces during animations and
+            transitions.
+        uirevision
+            Controls persistence of some user-driven changes to the
+            trace: `constraintrange` in `parcoords` traces, as well
+            as some `editable: true` modifications such as `name`
+            and `colorbar.title`. Defaults to `layout.uirevision`.
+            Note that other user-driven trace attribute changes are
+            controlled by `layout` attributes: `trace.visible` is
+            controlled by `layout.legend.uirevision`,
+            `selectedpoints` is controlled by
+            `layout.selectionrevision`, and `colorbar.(x|y)`
+            (accessible with `config: {editable: true}`) is
+            controlled by `layout.editrevision`. Trace changes are
+            tracked by `uid`, which only falls back on trace index
+            if no `uid` is provided. So if your app can add/remove
+            traces before the end of the `data` array, such that
+            the same trace has a different index, you can still
+            preserve user-driven changes if you give each trace a
+            `uid` that stays with it as it moves.
+        unselected
+            :class:`plotly.graph_objects.bar.Unselected` instance
+            or dict with compatible properties
+        visible
+            Determines whether or not this trace is visible. If
+            "legendonly", the trace is not drawn, but can appear as
+            a legend item (provided that the legend itself is
+            visible).
+        width
+            Sets the bar width (in position axis units).
+        widthsrc
+            Sets the source reference on Chart Studio Cloud for
+            `width`.
+        x
+            Sets the x coordinates.
+        x0
+            Alternate to `x`. Builds a linear space of x
+            coordinates. Use with `dx` where `x0` is the starting
+            coordinate and `dx` the step.
+        xaxis
+            Sets a reference between this trace's x coordinates and
+            a 2D cartesian x axis. If "x" (the default value), the
+            x coordinates refer to `layout.xaxis`. If "x2", the x
+            coordinates refer to `layout.xaxis2`, and so on.
+        xcalendar
+            Sets the calendar system to use with `x` date data.
+        xhoverformat
+            Sets the hover text formatting rulefor `x`  using d3
+            formatting mini-languages which are very similar to
+            those in Python. For numbers, see:
+            https://github.com/d3/d3-format/tree/v1.4.5#d3-format.
+            And for dates see: https://github.com/d3/d3-time-
+            format/tree/v2.2.3#locale_format. We add two items to
+            d3's date formatter: "%h" for half of the year as a
+            decimal number as well as "%{n}f" for fractional
+            seconds with n digits. For example, *2016-10-13
+            09:15:23.456* with tickformat "%H~%M~%S.%2f" would
+            display *09~15~23.46*By default the values are
+            formatted using `xaxis.hoverformat`.
+        xperiod
+            Only relevant when the axis `type` is "date". Sets the
+            period positioning in milliseconds or "M<n>" on the x
+            axis. Special values in the form of "M<n>" could be
+            used to declare the number of months. In this case `n`
+            must be a positive integer.
+        xperiod0
+            Only relevant when the axis `type` is "date". Sets the
+            base for period positioning in milliseconds or date
+            string on the x0 axis. When `x0period` is round number
+            of weeks, the `x0period0` by default would be on a
+            Sunday i.e. 2000-01-02, otherwise it would be at
+            2000-01-01.
+        xperiodalignment
+            Only relevant when the axis `type` is "date". Sets the
+            alignment of data points on the x axis.
+        xsrc
+            Sets the source reference on Chart Studio Cloud for
+            `x`.
+        y
+            Sets the y coordinates.
+        y0
+            Alternate to `y`. Builds a linear space of y
+            coordinates. Use with `dy` where `y0` is the starting
+            coordinate and `dy` the step.
+        yaxis
+            Sets a reference between this trace's y coordinates and
+            a 2D cartesian y axis. If "y" (the default value), the
+            y coordinates refer to `layout.yaxis`. If "y2", the y
+            coordinates refer to `layout.yaxis2`, and so on.
+        ycalendar
+            Sets the calendar system to use with `y` date data.
+        yhoverformat
+            Sets the hover text formatting rulefor `y`  using d3
+            formatting mini-languages which are very similar to
+            those in Python. For numbers, see:
+            https://github.com/d3/d3-format/tree/v1.4.5#d3-format.
+            And for dates see: https://github.com/d3/d3-time-
+            format/tree/v2.2.3#locale_format. We add two items to
+            d3's date formatter: "%h" for half of the year as a
+            decimal number as well as "%{n}f" for fractional
+            seconds with n digits. For example, *2016-10-13
+            09:15:23.456* with tickformat "%H~%M~%S.%2f" would
+            display *09~15~23.46*By default the values are
+            formatted using `yaxis.hoverformat`.
+        yperiod
+            Only relevant when the axis `type` is "date". Sets the
+            period positioning in milliseconds or "M<n>" on the y
+            axis. Special values in the form of "M<n>" could be
+            used to declare the number of months. In this case `n`
+            must be a positive integer.
+        yperiod0
+            Only relevant when the axis `type` is "date". Sets the
+            base for period positioning in milliseconds or date
+            string on the y0 axis. When `y0period` is round number
+            of weeks, the `y0period0` by default would be on a
+            Sunday i.e. 2000-01-02, otherwise it would be at
+            2000-01-01.
+        yperiodalignment
+            Only relevant when the axis `type` is "date". Sets the
+            alignment of data points on the y axis.
+        ysrc
+            Sets the source reference on Chart Studio Cloud for
+            `y`.
+        
+Did you mean "base"?
+
+Bad property path:
+line
+^^^^
+
