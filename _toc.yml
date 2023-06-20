@@ -14,9 +14,9 @@ parts:
     - caption: Visualisations
       section:
         - file: docs/vis1
-  - caption: Reflection 
-    chapters:
-      - file: 
-  - caption: Work Distribution
-    chapter:
-      - file: 
+  # - caption: Reflection 
+  #   chapters:
+  #     - file: 
+  # - caption: Work Distribution
+  #   chapter:
+  #     - file: 
