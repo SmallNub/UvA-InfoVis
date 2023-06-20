@@ -7,7 +7,6 @@ parts:
   - caption: Introduction
     chapters:
       - file: docs/notebook
-      
   - caption: Dataset and Preprocessing
     chapters:
       - file: docs/cleaner
@@ -17,7 +16,7 @@ parts:
         - file: docs/vis1
   - caption: Reflection 
     chapters:
-      - file: docs/notebook
+      - file: 
   - caption: Work Distribution
     chapter:
-      - file: docs/notebook
+      - file: 
