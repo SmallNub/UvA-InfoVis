@@ -3,18 +3,7 @@
 
 format: jb-book
 root: docs/home
-parts:
-  - caption: Introduction
-    chapters:
-      - file: docs/notebook
-  - caption: Dataset and Preprocessing
-    chapters:
-      - file: docs/cleaner
-      - file: docs/preprocess
-      - file: docs/vis1
-  # - caption: Reflection 
-  #   chapters:
-  #     - file: 
-  # - caption: Work Distribution
-  #   chapter:
-  #     - file: 
+chapters:
+  - file: docs/preprocess
+  - file: docs/vis1
+  - file: docs/vis2
