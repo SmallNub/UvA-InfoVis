@@ -36,8 +36,8 @@ launch_buttons:
   jupyterhub_url: ""
 
 sphinx:
+  myst_heading_anchors: 3
   extra_extensions:
-    - "myst-parser"
     # This is to work around the bug of no syntax highlighting
     - "IPython.sphinxext.ipython_console_highlighting"
   config:
