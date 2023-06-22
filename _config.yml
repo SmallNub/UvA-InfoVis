@@ -6,12 +6,12 @@ author: Steven Dong, Colin de Koning, Koen Woudstra, Lucas van de Berg # Change 
 copyright: "2023"
 
 only_build_toc_files: false
+exclude_patterns: ['README.md']
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
   execute_notebooks: cache
-  exclude_patterns: ['README.md']
 
 # Define the name of the latex output file for PDF builds
 latex:
