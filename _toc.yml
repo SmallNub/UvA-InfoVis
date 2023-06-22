@@ -3,11 +3,11 @@
 
 format: jb-book
 root: docs/home
-parts:
-  - caption: p1
-    chapters:
-      - file: docs/notebook
-  - caption: p2
-    chapters:
-      - file: docs/cleaner
-      - file: docs/preprocess
+chapters:
+  - file: docs/preprocess
+  - file: docs/vis1
+  - file: docs/vis2
+  - file: docs/vis3
+  - file: docs/vis4
+  - file: docs/vis5
+  - file: docs/vis6
