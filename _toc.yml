@@ -6,7 +6,7 @@ root: docs/home
 parts:
     chapters:
     - file: docs/preprocess
-  - caption: Visuals
+
     chapters:
     - file: docs/vis1
     - file: docs/vis2
