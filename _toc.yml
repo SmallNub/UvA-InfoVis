@@ -3,11 +3,17 @@
 
 format: jb-book
 root: docs/home
-chapters:
-  - file: docs/preprocess
-  - file: docs/vis1
-  - file: docs/vis2
-  - file: docs/vis3
-  - file: docs/vis4
-  - file: docs/vis5
-  - file: docs/vis6
+parts:
+    chapters:
+      - file: docs/preprocess
+  - caption: Visuals
+    chapters:
+      - file: docs/vis1
+      - file: docs/vis2
+      - file: docs/vis3
+      - file: docs/vis4
+      - file: docs/vis5
+      - file: docs/vis6
+    chapters:
+      - file: docs/reflection
+      - file: docs/work
