@@ -46,7 +46,6 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
@@ -159,6 +158,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="vis3.html">Visual 3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vis4.html">Visual 4</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Visual 5</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="vis6.html">Visual 6</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusion.html">Conclusion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reflection.html">Reflection</a></li>
@@ -364,7 +364,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -380,6 +382,16 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Visual 5</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Visual 5</a></li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -396,6 +408,19 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.graph_objs</span> <span class="k">as</span> <span class="nn">go</span>
 <span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;statsmodels&#39;
 </pre></div>
 </div>
 </div>
@@ -406,6 +431,102 @@ document.write(`
 <span class="c1"># On the x-axis we will put the amount of streams on spotify</span>
 <span class="c1"># On the y-axis we will put the amount of awards won by an artist</span>
 <span class="c1"># This will be a scatterplot where you can hover over the points to see what point corresponds to which artists.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>Visual 5<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<p>We used final.csv for streams and grammyAlbums_199-2019.csv / grammySongs_1999-2019.csv for the awards won by the Artists, we merged these dataset to plot a graph to see if there is a trendline between streams and awards but this does not seem to be the case.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../cleaned/final.csv&#39;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;streams&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;streams&#39;</span><span class="p">]</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;streams&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;streams&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;artist_individual&#39;</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;streams&#39;</span><span class="p">:</span> <span class="s1">&#39;sum&#39;</span><span class="p">})</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;artist_individual&#39;</span><span class="p">:</span> <span class="s1">&#39;Artist&#39;</span><span class="p">})</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;streams&#39;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;streams&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">500000000</span><span class="p">]</span>
+<span class="c1"># df = df.loc[df[&#39;streams&#39;] &lt; 15000000000]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;streams&#39;</span><span class="p">)</span>
+
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../cleaned/grammyAlbums_199-2019.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../cleaned/grammySongs_1999-2019.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">df3</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;GrammyAward&#39;</span><span class="p">:</span> <span class="s1">&#39;Award&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df2</span><span class="p">,</span> <span class="n">df3</span><span class="p">])</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Artist&#39;</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;Artist&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;Various Artists&#39;</span><span class="p">]</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;Award&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Award&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;Artist&#39;</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">head</span>
+<span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;streams&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Award&#39;</span><span class="p">,</span> <span class="n">hover_data</span><span class="o">=</span><span class="s1">&#39;Artist&#39;</span><span class="p">,</span> <span class="n">trendline</span><span class="o">=</span><span class="s1">&#39;ols&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Awards and streams per artist&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">25</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;Artist&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">24</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span>
+<span class="ne">---&gt; </span><span class="mi">25</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;streams&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Award&#39;</span><span class="p">,</span> <span class="n">hover_data</span><span class="o">=</span><span class="s1">&#39;Artist&#39;</span><span class="p">,</span> <span class="n">trendline</span><span class="o">=</span><span class="s1">&#39;ols&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Awards and streams per artist&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nn">File ~/miniconda3/envs/jupyterbook/lib/python3.11/site-packages/plotly/express/_chart_types.py:66,</span> in <span class="ni">scatter</span><span class="nt">(data_frame, x, y, color, symbol, size, hover_name, hover_data, custom_data, text, facet_row, facet_col, facet_col_wrap, facet_row_spacing, facet_col_spacing, error_x, error_x_minus, error_y, error_y_minus, animation_frame, animation_group, category_orders, labels, orientation, color_discrete_sequence, color_discrete_map, color_continuous_scale, range_color, color_continuous_midpoint, symbol_sequence, symbol_map, opacity, size_max, marginal_x, marginal_y, trendline, trendline_options, trendline_color_override, trendline_scope, log_x, log_y, range_x, range_y, render_mode, title, template, width, height)</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="k">def</span> <span class="nf">scatter</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="n">data_frame</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">60</span>     <span class="n">height</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">61</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">63</span><span class="sd">     In a scatter plot, each row of `data_frame` is represented by a symbol</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span><span class="sd">     mark in 2D space.</span>
+<span class="g g-Whitespace">     </span><span class="mi">65</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">66</span>     <span class="k">return</span> <span class="n">make_figure</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="nb">locals</span><span class="p">(),</span> <span class="n">constructor</span><span class="o">=</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">)</span>
+
+<span class="nn">File ~/miniconda3/envs/jupyterbook/lib/python3.11/site-packages/plotly/express/_core.py:2173,</span> in <span class="ni">make_figure</span><span class="nt">(args, constructor, trace_patch, layout_patch)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2170</span>     <span class="k">elif</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;ecdfnorm&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;percent&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2171</span>         <span class="n">group</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">group</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">/</span> <span class="n">group_sum</span>
+<span class="ne">-&gt; </span><span class="mi">2173</span> <span class="n">patch</span><span class="p">,</span> <span class="n">fit_results</span> <span class="o">=</span> <span class="n">make_trace_kwargs</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">2174</span>     <span class="n">args</span><span class="p">,</span> <span class="n">trace_spec</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">mapping_labels</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">sizeref</span>
+<span class="g g-Whitespace">   </span><span class="mi">2175</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2176</span> <span class="n">trace</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">patch</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2177</span> <span class="k">if</span> <span class="n">fit_results</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">File ~/miniconda3/envs/jupyterbook/lib/python3.11/site-packages/plotly/express/_core.py:359,</span> in <span class="ni">make_trace_kwargs</span><span class="nt">(args, trace_spec, trace_data, mapping_labels, sizeref)</span>
+<span class="g g-Whitespace">    </span><span class="mi">357</span> <span class="n">trace_patch</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sorted_trace_data</span><span class="p">[</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]][</span><span class="n">non_missing</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">358</span> <span class="n">trendline_function</span> <span class="o">=</span> <span class="n">trendline_functions</span><span class="p">[</span><span class="n">attr_value</span><span class="p">]</span>
+<span class="ne">--&gt; </span><span class="mi">359</span> <span class="n">y_out</span><span class="p">,</span> <span class="n">hover_header</span><span class="p">,</span> <span class="n">fit_results</span> <span class="o">=</span> <span class="n">trendline_function</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">360</span>     <span class="n">args</span><span class="p">[</span><span class="s2">&quot;trendline_options&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">361</span>     <span class="n">sorted_trace_data</span><span class="p">[</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]],</span>
+<span class="g g-Whitespace">    </span><span class="mi">362</span>     <span class="n">x</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">363</span>     <span class="n">y</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">364</span>     <span class="n">args</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">365</span>     <span class="n">args</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">366</span>     <span class="n">non_missing</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">367</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">368</span> <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_out</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">369</span>     <span class="n">trace_patch</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">370</span> <span class="p">),</span> <span class="s2">&quot;missing-data-handling failure in trendline code&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">371</span> <span class="n">trace_patch</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_out</span>
+
+<span class="nn">File ~/miniconda3/envs/jupyterbook/lib/python3.11/site-packages/plotly/express/trendline_functions/__init__.py:43,</span> in <span class="ni">ols</span><span class="nt">(trendline_options, x_raw, x, y, x_label, y_label, non_missing)</span>
+<span class="g g-Whitespace">     </span><span class="mi">37</span>     <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">valid_options</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">38</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span>             <span class="s2">&quot;OLS trendline_options keys must be one of [</span><span class="si">%s</span><span class="s2">] but got &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">40</span>             <span class="o">%</span> <span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">valid_options</span><span class="p">),</span> <span class="n">k</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">41</span>         <span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">43</span> <span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span> <span class="n">add_constant</span> <span class="o">=</span> <span class="n">trendline_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;add_constant&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">46</span> <span class="n">log_x</span> <span class="o">=</span> <span class="n">trendline_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;log_x&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;statsmodels&#39;
 </pre></div>
 </div>
 </div>
@@ -470,6 +591,22 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Visual 5</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Visual 5</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>
