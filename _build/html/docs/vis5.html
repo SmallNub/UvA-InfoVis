@@ -46,7 +46,6 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
@@ -401,7 +400,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="visual-5">
 <h1>Visual 5<a class="headerlink" href="#visual-5" title="Permalink to this heading">#</a></h1>
-<p>We used <code class="docutils literal notranslate"><span class="pre">final.csv</span></code> for streams and <code class="docutils literal notranslate"><span class="pre">grammyAlbums_199-2019.csv</span></code> and <code class="docutils literal notranslate"><span class="pre">grammySongs_1999-2019.csv</span></code> for the awards won by the Artists, we merged these dataset to plot a graph to see if there is a trendline between streams and awards but this does not seem to be the case.</p>
+<p>We thought it would be interesting to look if the amount of awards would increase the amount of streams. So if an artist is more liked by the critics if that would result in higher streams on spotify. We used <code class="docutils literal notranslate"><span class="pre">final.csv</span></code> for streams and <code class="docutils literal notranslate"><span class="pre">grammyAlbums_199-2019.csv</span></code> and <code class="docutils literal notranslate"><span class="pre">grammySongs_1999-2019.csv</span></code> for the awards won by the Artists, we merged these dataset to plot a graph to see if there is a trendline between streams and awards but looking at the trendline and person’s R there does not seem to be any correlations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.graph_objs</span> <span class="k">as</span> <span class="nn">go</span>
@@ -490,7 +489,7 @@ if (outputEl) {{
 </div>
 </div>
 </div>
-<p>If we remove the outliers, so the artists with stream values above 10 billion a slight trend will appear</p>
+<p>It is interesting to note that once we remove the outliers, the artist with rewards and more than 10 billion streams. We start to see a trend forming. Here we get a Pearson’s R greater than 0.5 which means there is a strong linear relationship.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;streams&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">10000000000</span><span class="p">]</span>
