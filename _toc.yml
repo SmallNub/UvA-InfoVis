@@ -5,9 +5,11 @@ format: jb-book
 root: docs/home
 chapters:
   - file: docs/preprocess
+  - caption: v1
   - file: docs/vis1
   - file: docs/vis2
   - file: docs/vis3
+  - caption: v2
   - file: docs/vis4
   - file: docs/vis5
   - file: docs/vis6
