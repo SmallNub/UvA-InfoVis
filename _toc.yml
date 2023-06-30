@@ -6,6 +6,7 @@ root: docs/home
 parts:
   - caption: Intro
     chapters:
+    - file: docs/home
     - file: docs/preprocess
   - caption: Raw numbers approach
     chapters:
