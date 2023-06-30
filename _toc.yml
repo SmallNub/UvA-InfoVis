@@ -4,6 +4,7 @@
 format: jb-book
 root: docs/home
 parts:
+  - caption: h
     chapters:
     - file: docs/preprocess
   # - caption: Raw numbers approach
