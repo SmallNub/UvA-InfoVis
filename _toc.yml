@@ -4,19 +4,19 @@
 format: jb-book
 root: docs/home
 parts:
-    chapters:
-    - file: docs/preprocess
-  - caption: Raw numbers approach
-    chapters:
-    - file: docs/vis1
-    - file: docs/vis2
-    - file: docs/vis3
-  - caption: Ratings approach
-    chapters:
-    - file: docs/vis4
-    - file: docs/vis5
-    - file: docs/vis6
-    chapters:
-    - file: docs/conclusion
-    - file: docs/reflection
-    - file: docs/work
+  chapters:
+  - file: docs/preprocess
+- caption: Raw numbers approach
+  chapters:
+  - file: docs/vis1
+  - file: docs/vis2
+  - file: docs/vis3
+- caption: Ratings approach
+  chapters:
+  - file: docs/vis4
+  - file: docs/vis5
+  - file: docs/vis6
+  chapters:
+  - file: docs/conclusion
+  - file: docs/reflection
+  - file: docs/work
