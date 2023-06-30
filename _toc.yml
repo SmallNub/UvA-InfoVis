@@ -4,7 +4,7 @@
 format: jb-book
 root: docs/home
 parts:
-  - caption: h
+  - caption: Intro
     chapters:
     - file: docs/preprocess
   - caption: Raw numbers approach
@@ -17,7 +17,7 @@ parts:
     - file: docs/vis4
     - file: docs/vis5
     - file: docs/vis6
-  - caption: a
+  - caption: Results
     chapters:
     - file: docs/conclusion
     - file: docs/reflection
