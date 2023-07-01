@@ -424,12 +424,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="datasets-and-preprocessing">
 <h1>Datasets and preprocessing<a class="headerlink" href="#datasets-and-preprocessing" title="Permalink to this heading">#</a></h1>
 <p>For this project we found various datasets online to support our perspectives on this topic. After we gathered these datasets, we used preprocessing to clean and filter out the data. We also performed various transformations on the data to make it more useful for our purposes. This preprocessing consisted of mainly dropping unneeded columns, empty data and invalid data. Afterwards, some datasets also received transformations to make later usage easier.</p>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
@@ -442,7 +437,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 <section id="datasets-used">
 <h2>Datasets used<a class="headerlink" href="#datasets-used" title="Permalink to this heading">#</a></h2>
@@ -458,12 +452,7 @@ document.write(`
 <p>This big dataset has a record of all the Spotify songs in the weekly top 200. It contains: the artist, the song name, from which album it is, the amount of streams and a lot more values. This is really useful because it can show us how many total streams each artist has. And how many streams each song has.</p>
 <section id="actions-performed-on-the-dataset">
 <h3>Actions performed on the dataset<a class="headerlink" href="#actions-performed-on-the-dataset" title="Permalink to this heading">#</a></h3>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean</span><span class="p">([</span><span class="s1">&#39;uri&#39;</span><span class="p">,</span> <span class="s1">&#39;artists_num&#39;</span><span class="p">,</span> <span class="s1">&#39;artist_id&#39;</span><span class="p">,</span> <span class="s1">&#39;artist_genre&#39;</span><span class="p">,</span> <span class="s1">&#39;artist_img&#39;</span><span class="p">,</span> <span class="s1">&#39;collab&#39;</span><span class="p">,</span> <span class="s1">&#39;album_cover&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;album_num_tracks&#39;</span><span class="p">,</span> <span class="s1">&#39;acousticness&#39;</span><span class="p">,</span> <span class="s1">&#39;instrumentalness&#39;</span><span class="p">,</span> <span class="s1">&#39;danceability&#39;</span><span class="p">,</span> <span class="s1">&#39;duration&#39;</span><span class="p">,</span> <span class="s1">&#39;energy&#39;</span><span class="p">,</span> <span class="s1">&#39;liveness&#39;</span><span class="p">,</span> <span class="s1">&#39;loudness&#39;</span><span class="p">,</span> <span class="s1">&#39;mode&#39;</span><span class="p">,</span> <span class="s1">&#39;speechiness&#39;</span><span class="p">,</span> <span class="s1">&#39;tempo&#39;</span><span class="p">,</span> <span class="s1">&#39;valence&#39;</span><span class="p">,</span> <span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="s1">&#39;pivot&#39;</span><span class="p">,</span> <span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="s1">&#39;region&#39;</span><span class="p">,</span> <span class="s1">&#39;language&#39;</span><span class="p">,</span> <span class="s1">&#39;release_date&#39;</span><span class="p">],</span> <span class="s1">&#39;final.csv&#39;</span><span class="p">)</span>
 </pre></div>
@@ -486,7 +475,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 </section>
 </section>
@@ -496,12 +484,7 @@ document.write(`
 <p>This dataset contains records about artists and how many albums they sold, whether those albums are gold, platinum, multi-platinum, and diamond. This dataset originates from the RIAA’s database. This dataset was originally made for a quiz. We can use this to see how many sales each album of each artist has and how many platinum records they have. Using this we can see which artist is more successful by the RIAA.</p>
 <section id="id1">
 <h3>Actions performed on the dataset<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean</span><span class="p">([</span><span class="s1">&#39;Artist ID&#39;</span><span class="p">],</span> <span class="s1">&#39;riaakaggle.csv&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 </pre></div>
@@ -517,7 +500,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 </section>
 </section>
@@ -527,36 +509,25 @@ document.write(`
 <p>This dataset was originally made for a research project at an university. The dataset contains multiple files about songs, artists and albums that appeared on Billboard. These records contain information like the amount of awards won, RIAA certificates received, rankings on Spotify, rankings on Billboard, amount of streams, song information, and album information. These datapoints are stored over multiple files to retain organization.</p>
 <section id="id2">
 <h3>Actions performed on the dataset<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean</span><span class="p">([</span><span class="s1">&#39;Genres&#39;</span><span class="p">,</span> <span class="s1">&#39;Gender&#39;</span><span class="p">,</span> <span class="s1">&#39;Group.Solo&#39;</span><span class="p">,</span> <span class="s1">&#39;YearFirstAlbum&#39;</span><span class="p">],</span> <span class="s1">&#39;artistDf.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean</span><span class="p">([</span><span class="s1">&#39;Genres&#39;</span><span class="p">,</span> <span class="s1">&#39;Group.Solo&#39;</span><span class="p">,</span> <span class="s1">&#39;YearFirstAlbum&#39;</span><span class="p">],</span> <span class="s1">&#39;artistDf.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           Artist  Followers  NumAlbums
-X                                      
-0      Ed Sheeran   52698756          8
-1   Justin Bieber   30711450         10
-2  Jonas Brothers    3069527         10
-3           Drake   41420478         11
-4     Chris Brown    9676862          6
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           Artist  Followers  NumAlbums Gender
+X                                             
+0      Ed Sheeran   52698756          8      M
+1   Justin Bieber   30711450         10      M
+2  Jonas Brothers    3069527         10      M
+3           Drake   41420478         11      M
+4     Chris Brown    9676862          6      M
 </pre></div>
 </div>
 </div>
-</details>
 </div>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean</span><span class="p">([</span><span class="s1">&#39;Lyrics&#39;</span><span class="p">,</span> <span class="s1">&#39;Genre&#39;</span><span class="p">,</span> <span class="s1">&#39;Writing.Credits&#39;</span><span class="p">,</span> <span class="s1">&#39;Features&#39;</span><span class="p">],</span> <span class="s1">&#39;billboardHot100_1999-2019.csv&#39;</span><span class="p">)</span>
 </pre></div>
@@ -579,14 +550,8 @@ X
 </pre></div>
 </div>
 </div>
-</details>
 </div>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean</span><span class="p">([</span><span class="s1">&#39;Genre&#39;</span><span class="p">,</span> <span class="s1">&#39;Album&#39;</span><span class="p">,</span> <span class="s1">&#39;GrammyYear&#39;</span><span class="p">],</span> <span class="s1">&#39;grammyAlbums_199-2019.csv&#39;</span><span class="p">)</span>
 </pre></div>
@@ -602,14 +567,8 @@ X
 </pre></div>
 </div>
 </div>
-</details>
 </div>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean</span><span class="p">([</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="s1">&#39;GrammyYear&#39;</span><span class="p">,</span> <span class="s1">&#39;Genre&#39;</span><span class="p">,</span> <span class="s1">&#39;Name&#39;</span><span class="p">],</span> <span class="s1">&#39;grammySongs_1999-2019.csv&#39;</span><span class="p">)</span>
 </pre></div>
@@ -632,14 +591,8 @@ X
 </pre></div>
 </div>
 </div>
-</details>
 </div>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean</span><span class="p">([</span><span class="s1">&#39;Label&#39;</span><span class="p">],</span> <span class="s1">&#39;riaaAlbumCerts_1999-2019.csv&#39;</span><span class="p">)</span>
 </pre></div>
@@ -655,14 +608,8 @@ X
 </pre></div>
 </div>
 </div>
-</details>
 </div>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean</span><span class="p">([</span><span class="s1">&#39;Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Label&#39;</span><span class="p">],</span> <span class="s1">&#39;riaaSingleCerts_1999-2019.csv&#39;</span><span class="p">)</span>
 </pre></div>
@@ -679,14 +626,8 @@ X
 </pre></div>
 </div>
 </div>
-</details>
 </div>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean</span><span class="p">([</span><span class="s1">&#39;Acousticness&#39;</span><span class="p">,</span> <span class="s1">&#39;Album&#39;</span><span class="p">,</span> <span class="s1">&#39;Danceability&#39;</span><span class="p">,</span> <span class="s1">&#39;Duration&#39;</span><span class="p">,</span> <span class="s1">&#39;Energy&#39;</span><span class="p">,</span> <span class="s1">&#39;Explicit&#39;</span><span class="p">,</span> <span class="s1">&#39;Instrumentalness&#39;</span><span class="p">,</span> <span class="s1">&#39;Liveness&#39;</span><span class="p">,</span> <span class="s1">&#39;Loudness&#39;</span><span class="p">,</span> <span class="s1">&#39;Mode&#39;</span><span class="p">,</span> <span class="s1">&#39;Speechiness&#39;</span><span class="p">,</span> <span class="s1">&#39;Tempo&#39;</span><span class="p">,</span> <span class="s1">&#39;TimeSignature&#39;</span><span class="p">,</span> <span class="s1">&#39;Valence&#39;</span><span class="p">],</span> <span class="s1">&#39;songAttributes_1999-2019.csv&#39;</span><span class="p">)</span>
 </pre></div>
@@ -702,14 +643,8 @@ X
 </pre></div>
 </div>
 </div>
-</details>
 </div>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean</span><span class="p">([</span><span class="s1">&#39;Features&#39;</span><span class="p">],</span> <span class="s1">&#39;spotifyWeeklyTop200Streams.csv&#39;</span><span class="p">)</span>
 </pre></div>
@@ -725,7 +660,6 @@ X
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 </section>
 </section>
